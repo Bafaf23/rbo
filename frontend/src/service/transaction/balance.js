@@ -6,7 +6,7 @@ import axios from "axios";
 export async function balance() {
   try {
     const response = await axios.get(
-      `${process.env.NEXT_API_URL}/transaction/balance`,
+      `${process.env.NEXT_PUBLIC_API_URL}/transaction/balance`,
       {
         withCredentials: true,
         headers: {
@@ -27,7 +27,7 @@ export async function balance() {
 export async function trans() {
   try {
     const response = await axios.get(
-      `${process.env.NEXT_API_URL}/transaction/trans`,
+      `${process.env.NEXT_PUBLIC_API_URL}/transaction/trans`,
       {
         withCredentials: true,
         headers: {
