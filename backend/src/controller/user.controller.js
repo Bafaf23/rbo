@@ -1,4 +1,3 @@
-import mongoose from "mongoose";
 import { conectDB, disconectDB } from "../../db.js";
 import { User } from "../model/User.model.js";
 
