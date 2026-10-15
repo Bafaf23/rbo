@@ -6,7 +6,7 @@ import axios from "axios";
 export async function create(data) {
   try {
     const response = await axios.post(
-      `${process.env.NEXT_API_URL}/transaction/`,
+      `${process.env.NEXT_PUBLIC_API_URL}/transaction/`,
       data,
       {
         withCredentials: true,
