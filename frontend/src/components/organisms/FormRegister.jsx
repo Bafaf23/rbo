@@ -7,9 +7,11 @@ import { faAnchorCircleCheck } from "@fortawesome/free-solid-svg-icons";
 import Button from "../atoms/Button";
 import { register } from "@/service/user/register";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function FormRegister() {
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   const [formData, setFormData] = useState({
     name: "",
@@ -48,6 +50,10 @@ export default function FormRegister() {
       alert(response.message);
       setLoading(false);
       setFormData(initialFormState);
+
+      setTimeout(() => {
+        router.push("/login");
+      }, 3000);
     } else {
       setLoading(false);
       alert(response.message);
