@@ -6,7 +6,7 @@ import axios from "axios";
 export async function login(dataUser) {
   try {
     const response = await axios.post(
-      `${process.env.NEXT_PUBLIC_API_URL}/auth/login`,
+      `${process.env.NEXT_API_URL}/auth/login`,
       dataUser,
       {
         withCredentials: true,

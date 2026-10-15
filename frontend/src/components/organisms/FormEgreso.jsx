@@ -67,7 +67,7 @@ export default function FormEgreso({ formRef, onSubmit, tasaDolar = 0 }) {
         </div>
 
         {/* Indicador de Tasa / Cálculo de Bs */}
-        <div className="bg-zinc-100 border border-zinc-200/80 rounded-2xl p-3 h-[46px] flex items-center justify-between">
+        <div className="bg-zinc-100 border border-zinc-200/80 rounded-2xl p-3 h-11.5 flex items-center justify-between">
           <span className="text-xs font-bold text-slate-500 uppercase">
             Ref. Bs:
           </span>
