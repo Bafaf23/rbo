@@ -24,9 +24,9 @@ export default function BalanceHeroCard({
     })}`;
 
   return (
-    <div className="h-full bg-zinc-100 border border-zinc-200/80 rounded-3xl p-6 flex flex-col justify-between relative overflow-hidden group shadow-sm hover:border-zinc-300 transition-colors">
+    <div className="h-full bg-zinc-50 border border-zinc-200/80 rounded-3xl p-6 flex flex-col justify-between relative overflow-hidden group shadow-sm hover:border-zinc-300 transition-colors">
       {/* Luz ambiental decorativa */}
-      <div className="absolute -top-12 -right-12 w-40 h-40 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -top-12 -right-12 w-40 h-40 bg-emerald-600/10 rounded-full blur-3xl pointer-events-none" />
 
       {/* Bloque superior: Saldo Total y Conversión a Bolívares */}
       <div className="flex justify-between items-start z-10 mb-6">
@@ -35,7 +35,7 @@ export default function BalanceHeroCard({
             Total Disponible
           </span>
           <div className="flex items-baseline gap-2 flex-wrap mt-1">
-            <h2 className="text-3xl md:text-5xl font-black text-blue-900 tracking-tight">
+            <h2 className="text-3xl md:text-5xl font-black text-green-700 tracking-tight">
               {formatearUSD(balanceUsd)}
             </h2>
             {tasaDolar > 0 && (
@@ -45,22 +45,16 @@ export default function BalanceHeroCard({
             )}
           </div>
         </div>
-
-        <button
-          className="text-slate-400 hover:text-slate-600 transition-colors cursor-pointer p-1"
-          title="Tasa actualizada de Dólar BCV"
-        >
-          <Icon icon={faInfoCircle} />
-        </button>
+        {/* button */}
       </div>
 
       {/* Bloque intermedio: Métricas rápidas (Ingresos, Gastos, Deudas) */}
-      <div className="grid grid-cols-3 gap-2 md:gap-3 z-10 mb-6">
+      <div className="grid grid-cols-2 gap-2 md:gap-3 z-10 mb-6">
         <div className="bg-white/80 border border-zinc-200 rounded-2xl p-3 flex flex-col justify-between shadow-2xs">
           <span className="text-[10px] md:text-xs font-bold text-emerald-700 uppercase tracking-wider">
             Ingresos
           </span>
-          <span className="text-sm md:text-base font-extrabold text-zinc-900 mt-1">
+          <span className="text-sm md:text-base font-extrabold text-emerald-600 mt-1">
             {formatearUSD(ingresos)}
           </span>
         </div>
@@ -69,19 +63,19 @@ export default function BalanceHeroCard({
           <span className="text-[10px] md:text-xs font-bold text-rose-600 uppercase tracking-wider">
             Gastos
           </span>
-          <span className="text-sm md:text-base font-extrabold text-zinc-900 mt-1">
+          <span className="text-sm md:text-base font-extrabold text-rose-500 mt-1">
             {formatearUSD(gastos)}
           </span>
         </div>
 
-        <div className="bg-white/80 border border-zinc-200 rounded-2xl p-3 flex flex-col justify-between shadow-2xs">
+      {/*   <div className="bg-white/80 border border-zinc-200 rounded-2xl p-3 flex flex-col justify-between shadow-2xs">
           <span className="text-[10px] md:text-xs font-bold text-amber-600 uppercase tracking-wider">
             Deudas
           </span>
-          <span className="text-sm md:text-base font-extrabold text-zinc-900 mt-1">
+          <span className="text-sm md:text-base font-extrabold text-amber-500 mt-1">
             {formatearUSD(deudas)}
           </span>
-        </div>
+        </div> */}
       </div>
 
       {/* Bloque inferior: Acciones Rápidas */}

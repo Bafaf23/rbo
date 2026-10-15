@@ -30,17 +30,17 @@ export default function DashboardLayout({ children }) {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-200 text-slate-950 p-2 md:py-3">
+    <div className="bg-zinc-100 text-slate-950 p-3">
       <div className="max-w-7xl mx-auto space-y-6">
         <header className="flex justify-between items-center">
           <div className="flex flex-col gap-1">
-            <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight text-blue-600">
+            <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight bg-linear-to-r from-amber-500 to-green-500 bg-clip-text text-transparent">
               {saludo},{" "}
-              <span className="text-zinc-950">
+              <span className="text-zinc-600">
                 {usuario?.name || "Inicia Sesion"}
               </span>
             </h1>
-            <p className="text-sm text-slate-500 font-semibold capitalize">
+            <p className="text-sm text-zinc-400 font-semibold capitalize">
               {new Date().toLocaleDateString("es-ES", {
                 weekday: "long",
                 day: "numeric",
@@ -49,10 +49,10 @@ export default function DashboardLayout({ children }) {
               })}
             </p>
           </div>
-          <button onClick={handleLogout}>
+          <button title={"Salir"} onClick={handleLogout}>
             <Icon
               icon={faSignOut}
-              className="text-2xl text-zinc-900 cursor-pointer hover:text-zinc-700"
+              className="text-2xl text-zinc-500 cursor-pointer hover:text-zinc-700"
             />
           </button>
         </header>

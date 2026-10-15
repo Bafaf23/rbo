@@ -1,14 +1,14 @@
 "use client";
 import { BarChart, Bar, XAxis, Tooltip, ResponsiveContainer } from "recharts";
 
-const data = [
+/* const data = [
   { mes: "Mar", ingresos: 1200, egresos: 850, deuda: 100 },
   { mes: "Abr", ingresos: 1400, egresos: 920, deuda: 1000 },
   { mes: "May", ingresos: 1100, egresos: 980, deuda: 1000 },
   { mes: "Jun", ingresos: 1500, egresos: 1050, deuda: 1800 },
   { mes: "Jul", ingresos: 1350, egresos: 800, deuda: 1080 },
   { mes: "Ago", ingresos: 1600, egresos: 950, deuda: 180 },
-];
+]; */
 
 const CustomTooltip = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
@@ -35,9 +35,9 @@ const CustomTooltip = ({ active, payload, label }) => {
   return null;
 };
 
-export default function MonthlyCashFlowCard() {
+export default function MonthlyCashFlowCard({ data }) {
   return (
-    <div className="h-full bg-zinc-100 border border-zinc-200/80 rounded-3xl p-6 flex flex-col justify-between shadow-sm">
+    <div className="h-full bg-zinc-50 border border-zinc-200/80 rounded-3xl p-6 flex flex-col justify-between shadow-sm">
       {/* Encabezado e Indicador visual */}
       <div className="flex justify-between items-center">
         <div>
@@ -69,7 +69,7 @@ export default function MonthlyCashFlowCard() {
       {/* Área del Gráfico */}
       <div className="w-full h-36 my-2">
         <ResponsiveContainer width="100%" height="100%">
-          <BarChart data={data} barGap={4}>
+          <BarChart data={data?.data} barGap={4}>
             <XAxis
               dataKey="mes"
               axisLine={false}
@@ -97,13 +97,6 @@ export default function MonthlyCashFlowCard() {
             />
           </BarChart>
         </ResponsiveContainer>
-      </div>
-
-      <div className="flex justify-between items-center border-t border-zinc-200/80 pt-3 text-xs">
-        <span className="text-slate-500 font-medium">Balance último mes:</span>
-        <span className="font-bold text-emerald-700 bg-emerald-100/80 px-2.5 py-0.5 rounded-full">
-          +$650.00
-        </span>
       </div>
     </div>
   );

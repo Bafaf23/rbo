@@ -3,16 +3,13 @@
 import { useState, useRef } from "react";
 import Icon from "../atoms/Icon";
 import {
-  faArrowUpRightFromSquare,
-  faFingerprint,
-  faPlus,
+  faChevronLeft,
+  faChevronRight,
+  faMoneyBillTransfer,
 } from "@fortawesome/free-solid-svg-icons";
 import Modal from "@/components/organisms/Modal";
 import FormIngreso from "./FormIngreso";
-// Importa también los demás formularios cuando los tengas listos
-// import FormGasto from "./FormGasto";
-// import FormDeuda from "./FormDeuda";
-
+import FormEgreso from "./FormEgreso";
 import { create } from "@/service/transaction/create";
 
 export default function QuickActionsCard({ tasaDolar }) {
@@ -20,7 +17,6 @@ export default function QuickActionsCard({ tasaDolar }) {
   const [tipoModal, setTipoModal] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  // Referencia para accionar el submit desde el botón del footer del Modal
   const formRef = useRef(null);
 
   const handleOpenModal = (tipo) => {
@@ -47,7 +43,6 @@ export default function QuickActionsCard({ tasaDolar }) {
       }
     } catch (error) {
       console.error("Error al guardar la transacción:", error);
-      // Opcional: Notificar error al usuario vía toast o banner
     } finally {
       setIsLoading(false);
     }
@@ -56,37 +51,38 @@ export default function QuickActionsCard({ tasaDolar }) {
   const accionesRapidas = [
     {
       label: "Gastos",
-      icon: faArrowUpRightFromSquare,
-      color: "text-blue-600",
+      icon: faChevronRight,
+      iconClass: "text-red-600 -rotate-50",
+      color: "text-rose-600 bg-rose-600/10 border border-rose-200",
       onClick: () => handleOpenModal("Registrar Gasto"),
     },
     {
       label: "Ingreso",
-      icon: faFingerprint,
-      color: "text-emerald-600",
+      icon: faChevronLeft,
+      iconClass: "text-emerald-600 -rotate-50",
+      color: "text-emerald-600 bg-emerald-600/10 border border-emerald-200",
       onClick: () => handleOpenModal("Registrar Ingreso"),
     },
-    {
+    /*  {
       label: "Deuda",
-      icon: faPlus,
-      color: "text-amber-600",
+      icon: faMoneyBillTransfer,
+      iconClass: "text-amber-600",
+      color: "text-amber-600 bg-amber-600/10 border border-amber-200",
       onClick: () => handleOpenModal("Registrar Deuda"),
-    },
+    }, */
   ];
 
   return (
     <div className="flex flex-col justify-between">
-      <div className="grid grid-cols-3 gap-3 mt-2">
+      <div className={`grid grid-cols-${accionesRapidas.length} gap-3 mt-2`}>
         {accionesRapidas.map((act, i) => (
           <button
             onClick={act.onClick}
             key={i}
-            className="flex flex-col items-center gap-2 p-3 rounded-2xl bg-white border border-zinc-200 hover:bg-zinc-50 transition-colors cursor-pointer"
+            className={`flex flex-col items-center gap-2 p-3 rounded-2xl ${act.color} transition-colors cursor-pointer`}
           >
-            <Icon icon={act.icon} className={`text-xl ${act.color}`} />
-            <span className="text-xs font-semibold text-slate-700">
-              {act.label}
-            </span>
+            <Icon icon={act.icon} className={`text-xl ${act.iconClass}`} />
+            <span className="text-xs font-bold">{act.label}</span>
           </button>
         ))}
       </div>
@@ -122,15 +118,14 @@ export default function QuickActionsCard({ tasaDolar }) {
           />
         )}
 
-        {/* 
         {tipoModal === "Registrar Gasto" && (
-          <FormGasto
+          <FormEgreso
             formRef={formRef}
             tasaDolar={tasaDolar}
             onSubmit={handleSubmitForm}
           />
         )}
-
+        {/* 
         {tipoModal === "Registrar Deuda" && (
           <FormDeuda
             formRef={formRef}

@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
-// SE OPTIMIZÓ: Sacamos el arreglo del componente para que no se recree en cada render
 const BACKGROUNDS = [
   "https://lagranaldea.com/wp-content/uploads/2021/04/21-04-2021-CCS.jpg",
   "https://images.unsplash.com/photo-1714594923299-e915b7d71701?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2FyYWNhc3xlbnwwfHwwfHx8MA%3D%3D",
@@ -12,7 +11,6 @@ const BACKGROUNDS = [
   "https://walpaper.es/wallpaper/2017/04/imagenes-de-paisajes-relajantes.jpg",
 ];
 
-// SE CORRIGIÓ: Nombre cambiado a Mayúscula (AuthLayout) para eliminar las alertas de ESLint
 export default function AuthLayout({ children }) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -23,14 +21,14 @@ export default function AuthLayout({ children }) {
 
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % BACKGROUNDS.length);
-    }, 20000); // Cambio exacto cada 10 segundos
+    }, 20000);
 
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="min-h-screen grid grid-cols-1 md:grid-cols-2 bg-slate-900">
-      {/* COLUMNA IZQUIERDA: Fotos de Caracas con transición (Oculta en móviles) */}
+    <div className="min-h-dvh grid grid-cols-1 md:grid-cols-2 bg-slate-900">
+      {/*COLUMNA IZQUIERDA*/}
       <div className="relative hidden md:block w-full h-full overflow-hidden">
         {BACKGROUNDS.map((url, index) => (
           <div
@@ -62,7 +60,7 @@ export default function AuthLayout({ children }) {
         </div>
       </div>
 
-      <div className="w-full min-h-screen flex items-center justify-center p-4 sm:p-8 md:p-12 bg-slate-50">
+      <div className="w-full min-h-screen flex items-center justify-center py-2 px-8 md:p-12 bg-slate-50">
         <div className="w-full max-w-md">{children}</div>
       </div>
     </div>
