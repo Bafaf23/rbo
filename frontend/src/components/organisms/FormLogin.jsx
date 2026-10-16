@@ -73,10 +73,10 @@ export default function FormLogin() {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl text-slate-900 uppercase font-extrabold leading-tight">
+        <h2 className="text-2xl text-slate-900 dark:text-zinc-100 uppercase font-extrabold leading-tight">
           Bienvenido
         </h2>
-        <p className="text-gray-400 font-bold text-sm">
+        <p className="text-gray-400 dark:text-zinc-400 font-bold text-sm">
           Usa tus credenciales para ingresar al sistema
         </p>
       </div>
@@ -86,7 +86,7 @@ export default function FormLogin() {
         <div className="flex flex-col gap-2">
           <label
             htmlFor="UserEmail"
-            className="text-sm font-semibold text-slate-600 ml-1"
+            className="text-sm font-semibold text-slate-600 dark:text-zinc-100 ml-1"
           >
             Usuario
           </label>
@@ -104,7 +104,7 @@ export default function FormLogin() {
         <div className="flex flex-col gap-2 relative">
           <label
             htmlFor="pasUser"
-            className="text-sm font-semibold text-slate-600 ml-1"
+            className="text-sm font-semibold text-slate-600 dark:text-zinc-100 ml-1"
           >
             Contraseña
           </label>
@@ -131,8 +131,8 @@ export default function FormLogin() {
         </div>
 
         {/* Enlace de Registro */}
-        <p className="text-center text-sm text-slate-500 pt-2">
-          ¿No tienes cuenta?{" "}
+        <p className="text-center text-sm text-zinc-300 pt-2">
+          ¿No tienes cuenta?,{" "}
           <Link
             href="/register"
             className="font-bold text-blue-600 hover:underline"

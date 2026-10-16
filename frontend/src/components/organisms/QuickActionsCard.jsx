@@ -53,14 +53,14 @@ export default function QuickActionsCard({ tasaDolar }) {
       label: "Gastos",
       icon: faChevronRight,
       iconClass: "text-red-600 -rotate-50",
-      color: "text-rose-600 bg-rose-600/10 border border-rose-200",
+      color: "text-rose-600 bg-rose-600/10 border border-rose-200 dark:border-rose-500",
       onClick: () => handleOpenModal("Registrar Gasto"),
     },
     {
       label: "Ingreso",
       icon: faChevronLeft,
       iconClass: "text-emerald-600 -rotate-50",
-      color: "text-emerald-600 bg-emerald-600/10 border border-emerald-200",
+      color: "text-emerald-600 bg-emerald-600/10 border border-emerald-200 dark:border-emerald-500",
       onClick: () => handleOpenModal("Registrar Ingreso"),
     },
     /*  {

@@ -12,14 +12,14 @@ export default function Movements({ movements = [], icon }) {
   };
 
   return (
-    <div className="h-80 bg-white border border-zinc-200/80 rounded-3xl p-6 flex flex-col gap-5 transition-colors">
+    <div className="h-80 bg-white dark:bg-zinc-700 dark:border-zinc-500 border border-zinc-200/80 rounded-3xl p-6 flex flex-col gap-5 transition-colors">
       {/* Cabecera de la tarjeta */}
       <div className="flex justify-between items-center gap-2 shrink-0">
         <div>
-          <h3 className="text-xs uppercase tracking-wider font-bold text-zinc-700">
+          <h3 className="text-xs uppercase tracking-wider font-bold text-zinc-700 dark:text-zinc-100">
             Movimientos mensuales
           </h3>
-          <span className="text-xs text-zinc-500 font-medium">
+          <span className="text-xs text-zinc-500 dark:text-zinc-400 font-medium">
             Visualiza los 10 últimos movimientos realizados
           </span>
         </div>
@@ -39,14 +39,14 @@ export default function Movements({ movements = [], icon }) {
             return (
               <div
                 key={m?.id || index}
-                className="bg-white border border-zinc-200/80 p-3 rounded-2xl shadow-sm hover:shadow hover:bg-zinc-50/50 transition-all flex justify-between items-center shrink-0 gap-3"
+                className="bg-white dark:bg-zinc-800 border border-zinc-200/80 dark:border-zinc-700 p-3 rounded-2xl shadow-sm hover:shadow hover:bg-zinc-50/50 dark:hover:bg-zinc-800/50 transition-all flex justify-between items-center shrink-0 gap-3"
               >
                 {/* Lado izquierdo: Icono e Info */}
                 <div className="flex items-center gap-3 min-w-0">
                   <span
                     className={`w-10 h-10 rounded-full flex items-center justify-center shrink-0 ${
                       isIngreso
-                        ? "bg-emerald-100/60 text-emerald-600"
+                        ? "bg-emerald-100/60 text-emerald-600 dark:text-green-300 dark:bg-green-200/30"
                         : "bg-red-100/60 text-red-600"
                     }`}
                   >
@@ -56,13 +56,13 @@ export default function Movements({ movements = [], icon }) {
                   <div className="flex flex-col min-w-0">
                     <h2
                       className={`text-sm font-bold uppercase truncate max-w-32.5 sm:max-w-50 ${
-                        isIngreso ? "text-emerald-700" : "text-zinc-800"
+                        isIngreso ? "text-emerald-700 dark:text-green-500" : "text-zinc-800 dark:text-zinc-300"
                       }`}
                       title={m?.title}
                     >
                       {m?.title || "Sin título"}
                     </h2>
-                    <span className="text-[11px] text-zinc-500 capitalize truncate">
+                    <span className="text-[11px] text-zinc-500 dark:text-zinc-400 capitalize truncate">
                       {m?.type} {m?.category ? `/ ${m?.category}` : ""}
                     </span>
                   </div>
@@ -72,7 +72,7 @@ export default function Movements({ movements = [], icon }) {
                 <div className="text-right shrink-0">
                   <span
                     className={`text-base sm:text-lg font-bold tracking-tight ${
-                      isIngreso ? "text-emerald-600" : "text-red-600"
+                      isIngreso ? "text-emerald-600 dark:text-emerald-500" : "text-red-600"
                     }`}
                   >
                     {isIngreso ? "+" : "-"}
@@ -85,7 +85,7 @@ export default function Movements({ movements = [], icon }) {
         ) : (
           /* Estado Vacío */
           <div className="flex-1 flex items-center justify-center text-center p-4">
-            <p className="text-xs text-zinc-400 font-medium">
+            <p className="text-xs text-zinc-400 dark:text-zinc-500 font-medium">
               No hay movimientos recientes registrados
             </p>
           </div>

@@ -32,10 +32,10 @@ export default function StatCard({
     : null;
 
   return (
-    <div className="h-full bg-white border border-zinc-200/80 rounded-3xl p-6 flex flex-col justify-between shadow-sm hover:border-zinc-300 transition-colors">
+    <div className="h-full bg-white dark:bg-zinc-700 dark:border-zinc-500 border border-zinc-200/80 rounded-3xl p-6 flex flex-col justify-between shadow-sm hover:border-zinc-300 transition-colors hover:dark:border-zinc-700 ">
       {/* Cabecera de la tarjeta */}
       <div className="flex justify-between items-center gap-2">
-        <span className="text-xs uppercase tracking-wider font-bold text-zinc-600">
+        <span className="text-xs uppercase tracking-wider font-bold text-zinc-600 dark:text-zinc-100">
           {title}
         </span>
         {icon && (
@@ -52,7 +52,7 @@ export default function StatCard({
             ${montoUsd}
           </h4>
           {amountBs && (
-            <span className="text-sm font-bold text-zinc-400">
+            <span className="text-sm font-bold text-zinc-400 dark:text-zinc-300">
               / Bs {montoBsCalculado}
             </span>
           )}
@@ -60,7 +60,7 @@ export default function StatCard({
 
         {desc && (
           <span
-            className={`text-xs font-semibold mt-1 block ${
+            className={`text-xs font-semibold mt-1 dark:text-zinc-300 block ${
               trendPositive === true
                 ? "text-emerald-700"
                 : trendPositive === false

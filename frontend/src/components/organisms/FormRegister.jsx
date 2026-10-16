@@ -40,7 +40,7 @@ export default function FormRegister() {
 
     if (formData.passConfig !== formData.pass) {
       setLoading(false);
-      alert("Las contrasenas teiene que ser iguales");
+      alert("Las contrasenas tiene que ser iguales");
       return;
     }
 
@@ -71,10 +71,10 @@ export default function FormRegister() {
   return (
     <div className="flex flex-col space-y-6">
       <div>
-        <h2 className="text-2xl text-slate-900 uppercase font-extrabold leading-tight tracking-tight">
+        <h2 className="text-2xl text-slate-900 dark:text-zinc-100 uppercase font-extrabold leading-tight tracking-tight">
           Crea tu cuenta gratis
         </h2>
-        <p className="text-slate-400 font-bold text-sm mt-1">
+        <p className="text-slate-500 font-medium text-sm mt-1 dark:text-zinc-400">
           Empieza a usar la mejor forma de organizarte
         </p>
       </div>
@@ -83,14 +83,14 @@ export default function FormRegister() {
         {/* Fila: Nombre y Apellido */}
         <div className="grid grid-cols-2 gap-3">
           <div className="flex flex-col gap-2">
-            {/* SE CORRIGIÓ: htmlFor alineado al id correcto */}
             <label
               htmlFor="regName"
-              className="text-sm font-semibold text-slate-600 ml-1"
+              className="text-sm font-semibold text-slate-700 ml-1 dark:text-zinc-200"
             >
               Nombre
             </label>
             <Input
+              id="regName"
               type="text"
               placeholder="Carlos"
               name="name"
@@ -100,14 +100,14 @@ export default function FormRegister() {
           </div>
 
           <div className="flex flex-col gap-2">
-            {/* SE CORRIGIÓ: htmlFor alineado al id correcto */}
             <label
               htmlFor="regLastName"
-              className="text-sm font-semibold text-slate-600 ml-1"
+              className="text-sm font-semibold text-slate-700 ml-1 dark:text-zinc-200"
             >
               Apellido
             </label>
             <Input
+              id="regLastName"
               type="text"
               placeholder="Pérez"
               name="lastName"
@@ -119,14 +119,14 @@ export default function FormRegister() {
 
         {/* Campo: Correo Electrónico */}
         <div className="flex flex-col gap-2">
-          {/* SE CORRIGIÓ: htmlFor alineado al id correcto */}
           <label
             htmlFor="regEmail"
-            className="text-sm font-semibold text-slate-600 ml-1"
+            className="text-sm font-semibold text-slate-700 ml-1 dark:text-zinc-200"
           >
             Correo Electrónico
           </label>
           <Input
+            id="regEmail"
             type="email"
             placeholder="tucorreo@correo.com"
             name="email"
@@ -138,14 +138,14 @@ export default function FormRegister() {
         {/* Fila: Contraseñas */}
         <div className="grid grid-cols-2 gap-3">
           <div className="flex flex-col gap-2">
-            {/* SE CORRIGIÓ: htmlFor alineado al id correcto */}
             <label
               htmlFor="regPass"
-              className="text-sm font-semibold text-slate-600 ml-1"
+              className="text-sm font-semibold text-slate-700 ml-1 dark:text-zinc-200"
             >
               Contraseña
             </label>
             <Input
+              id="regPass"
               type="password"
               placeholder="******"
               name="pass"
@@ -155,10 +155,9 @@ export default function FormRegister() {
           </div>
 
           <div className="flex flex-col gap-2">
-            {/* SE CORRIGIÓ: htmlFor alineado al id correcto */}
             <label
               htmlFor="regPassRepeat"
-              className="text-sm font-semibold text-slate-600 ml-1"
+              className="text-sm font-semibold text-slate-700 ml-1 dark:text-zinc-200"
             >
               Repite la contraseña
             </label>
@@ -173,31 +172,27 @@ export default function FormRegister() {
           </div>
         </div>
 
-        {/* Bloque de Requisitos de Contraseña */}
-        <div className="bg-amber-50/80 border border-amber-100 text-sm flex items-start gap-4 rounded-2xl p-4">
-          <span className="text-2xl text-amber-600 mt-0.5 shrink-0">
-            {/* SE CORRIGIÓ: Renderizado del icono gratuito */}
+        {/* Bloque de Requisitos de Contraseña - Contraste mejorado en modo oscuro */}
+        <div className="bg-amber-50/80 dark:bg-amber-950/40 dark:border-amber-700/60 border border-amber-200 text-sm flex items-start gap-4 rounded-2xl p-4">
+          <span className="text-2xl text-amber-600 dark:text-amber-400 mt-0.5 shrink-0">
             <Icon icon={faAnchorCircleCheck} />
           </span>
           <div className="space-y-1">
-            <p className="font-semibold text-amber-900">
+            <p className="font-semibold text-amber-900 dark:text-amber-200">
               La contraseña debe tener:
             </p>
-            <ul className="text-xs text-amber-800 space-y-0.5 list-disc list-inside">
+            <ul className="text-xs text-amber-800 dark:text-amber-300 space-y-1 list-disc list-inside">
               <li>
-                {" "}
                 Un carácter especial{" "}
-                <span className="font-mono bg-amber-100 px-1 py-0.5 rounded text-[11px]">
+                <span className="font-mono bg-amber-100 dark:bg-amber-900/60 dark:text-amber-200 px-1 py-0.5 rounded text-[11px]">
                   !@#$%^&*
                 </span>
               </li>
-              <li> Una minúscula y una mayúscula</li>
+              <li>Una minúscula y una mayúscula</li>
               <li>
-                {" "}
                 Estructura <span className="font-semibold">alfanumérica</span>
               </li>
               <li>
-                {" "}
                 Longitud de <span className="font-semibold">8 a 16</span>{" "}
                 caracteres
               </li>
@@ -218,11 +213,11 @@ export default function FormRegister() {
         </div>
 
         {/* Enlace de Retorno */}
-        <p className="text-center text-sm text-slate-500 pt-2">
+        <p className="text-center text-sm text-slate-500 dark:text-zinc-400 pt-2">
           ¿Tienes cuenta?{" "}
           <Link
             href="/login"
-            className="font-bold text-blue-600 hover:underline"
+            className="font-bold text-blue-600 dark:text-blue-400 hover:underline"
           >
             Iniciar Sesión
           </Link>

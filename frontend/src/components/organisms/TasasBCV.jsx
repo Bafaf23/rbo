@@ -12,10 +12,10 @@ export default function TasasBCV({
   };
 
   return (
-    <div className="h-full bg-white border border-zinc-200/80 rounded-3xl p-6 flex flex-col justify-between shadow-sm hover:border-zinc-300 transition-colors">
+    <div className="h-full bg-white border border-zinc-200/80 rounded-3xl p-6 flex flex-col justify-between shadow-sm hover:border-zinc-300 transition-colors dark:bg-zinc-700 dark:border-zinc-500 hover:dark:border-zinc-600">
       {/* Cabecera de la tarjeta */}
       <div className="flex justify-between items-center gap-2">
-        <span className="text-xs uppercase tracking-wider font-bold text-zinc-600">
+        <span className="text-xs uppercase tracking-wider font-bold text-zinc-600 dark:text-zinc-100">
           {title}
         </span>
       </div>
@@ -24,7 +24,7 @@ export default function TasasBCV({
       <div className="mt-2">
         <div className="flex md:flex-col justify-between gap-1">
           <h4
-            className={`md:text-2xl font-black tracking-tight text-emerald-600`}
+            className={`md:text-2xl font-black tracking-tight text-emerald-600 dark:text-emerald-400`}
           >
             USD Bs {parseAmount(amountUsd)}
           </h4>
@@ -35,7 +35,7 @@ export default function TasasBCV({
         </div>
 
         {desc && (
-          <span className={`text-xs font-semibold mt-1 block text-zinc-400`}>
+          <span className={`text-xs font-semibold mt-1 block text-zinc-400 dark:text-zinc-300`}>
             {desc}
           </span>
         )}

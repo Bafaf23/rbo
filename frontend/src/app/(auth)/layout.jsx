@@ -27,9 +27,9 @@ export default function AuthLayout({ children }) {
   }, []);
 
   return (
-    <div className="min-h-dvh grid grid-cols-1 md:grid-cols-2 bg-slate-900">
-      {/*COLUMNA IZQUIERDA*/}
-      <div className="relative hidden md:block w-full h-full overflow-hidden">
+    <section className="min-h-dvh w-full flex bg-transparent overflow-hidden">
+      {/* COLUMNA IZQUIERDA (Imágenes de fondo): Ocupa el espacio restante con md:flex-1 */}
+      <div className="relative hidden md:block md:flex-1 h-dvh overflow-hidden">
         {BACKGROUNDS.map((url, index) => (
           <div
             key={url}
@@ -43,7 +43,7 @@ export default function AuthLayout({ children }) {
               priority
               className="object-cover"
               alt={`Fondo dinámico RBO ${index + 1}`}
-              sizes="100vw"
+              sizes="50vw"
             />
           </div>
         ))}
@@ -60,9 +60,10 @@ export default function AuthLayout({ children }) {
         </div>
       </div>
 
-      <div className="w-full min-h-screen flex items-center justify-center py-2 px-8 md:p-12 bg-slate-50">
-        <div className="w-full max-w-md">{children}</div>
+      {/* COLUMNA DERECHA (Formulario de Login): Ancho adaptado en móvil y fijo/responsivo en desktop */}
+      <div className="flex items-center justify-center py-8 px-6 md:p-15 w-full lg:w-1/3 bg-white dark:bg-zinc-900">
+        <main className="w-full max-w-md">{children}</main>
       </div>
-    </div>
+    </section>
   );
 }

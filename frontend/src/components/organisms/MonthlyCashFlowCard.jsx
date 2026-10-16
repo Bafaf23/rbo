@@ -37,14 +37,14 @@ const CustomTooltip = ({ active, payload, label }) => {
 
 export default function MonthlyCashFlowCard({ data }) {
   return (
-    <div className="h-full bg-zinc-50 border border-zinc-200/80 rounded-3xl p-6 flex flex-col justify-between shadow-sm">
+    <div className="h-full bg-white dark:bg-zinc-700 border border-zinc-200/80  dark:border-zinc-500  rounded-3xl p-6 flex flex-col justify-between shadow-sm">
       {/* Encabezado e Indicador visual */}
       <div className="flex justify-between items-center">
         <div>
-          <span className="text-xs uppercase tracking-wider font-bold text-slate-500">
+          <span className="text-xs uppercase tracking-wider font-bold text-slate-500 dark:text-zinc-100">
             Flujo Mensual
           </span>
-          <h3 className="text-sm font-semibold text-slate-700 mt-0.5">
+          <h3 className="text-sm font-semibold text-slate-700 dark:text-zinc-300 mt-0.5">
             Ingresos, Egresos y Deuda
           </h3>
         </div>
