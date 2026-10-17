@@ -29,7 +29,7 @@ export default function InputLabel({
       {label && (
         <label
           htmlFor={inputId}
-          className="text-sm font-semibold text-slate-600 ml-1"
+          className="text-sm font-semibold text-slate-600 ml-1 dark:text-zinc-200"
         >
           {label} {required && <span className="text-rose-500">*</span>}
         </label>

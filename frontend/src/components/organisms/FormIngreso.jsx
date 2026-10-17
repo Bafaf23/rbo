@@ -64,11 +64,11 @@ export default function FormIngreso({ formRef, onSubmit, tasaDolar = 0 }) {
         </div>
 
         {/* Indicador de Tasa / Cálculo de Bs */}
-        <div className="bg-zinc-100 border border-zinc-200/80 rounded-2xl p-3 h-[46px] flex items-center justify-between">
-          <span className="text-xs font-bold text-slate-500 uppercase">
+        <div className="bg-zinc-300 dark:bg-zinc-800 dark:border-zinc-700 border border-zinc-200/80 rounded-2xl p-3 h-11.5 flex items-center justify-between">
+          <span className="text-xs font-bold dark:text-zinc-200 text-slate-500 uppercase">
             Ref. Bs:
           </span>
-          <span className="text-sm font-extrabold text-emerald-700">
+          <span className="text-sm font-extrabold text-emerald-700 dark:text-green-500">
             Bs.{" "}
             {Number(montoBs).toLocaleString("es-VE", {
               minimumFractionDigits: 2,
@@ -80,7 +80,7 @@ export default function FormIngreso({ formRef, onSubmit, tasaDolar = 0 }) {
       {/* Categoría y Fecha */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
         <div>
-          <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+          <label className="block text-xs font-bold dark:text-zinc-200 text-slate-700 uppercase tracking-wider mb-1.5">
             Categoría / Fuente
           </label>
           <select
@@ -88,7 +88,7 @@ export default function FormIngreso({ formRef, onSubmit, tasaDolar = 0 }) {
             name="category"
             value={formData.category}
             onChange={handleChange}
-            className="w-full bg-white border border-zinc-200 rounded-2xl p-3 text-sm text-slate-800 focus:outline-none focus:border-blue-500 transition-colors cursor-pointer"
+            className="w-full bg-white dark:bg-zinc-800 dark:border-zinc-700 border border-zinc-200 rounded-2xl p-3 text-sm text-slate-800 dark:text-zinc-200 focus:outline-none focus:border-blue-500 transition-colors cursor-pointer"
           >
             <option value="sueldo">Sueldo / Nómina</option>
             <option value="freelance">Freelance / Servicios</option>
