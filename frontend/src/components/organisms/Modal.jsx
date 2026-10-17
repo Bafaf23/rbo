@@ -25,7 +25,7 @@ export default function Modal({ isOpen, onClose, title, children, footer }) {
       <Backdrop onClick={onClose} />
 
       {/* Contenedor Principal de la Modal */}
-      <div className="relative w-full max-w-lg bg-white rounded-3xl shadow-xl border border-zinc-200/80 z-10 overflow-hidden flex flex-col max-h-[90vh] animate-scale-up">
+      <div className="relative w-full max-w-lg bg-white dark:bg-zinc-900 dark:border-zinc-800 rounded-3xl shadow-xl border border-zinc-200/80 z-10 overflow-hidden flex flex-col animate-scale-up">
         {/* Cabecera (Molécula) */}
         <div className="p-6 pb-2">
           <ModalHeader title={title} onClose={onClose} />
@@ -38,7 +38,7 @@ export default function Modal({ isOpen, onClose, title, children, footer }) {
 
         {/* Pie de página opcional */}
         {footer && (
-          <div className="p-6 pt-4 border-t border-zinc-200 bg-zinc-50/50 flex justify-end gap-3">
+          <div className="p-6 pt-4 border-t border-zinc-200 dark:border-zinc-800 dark:bg-zinc-950 bg-zinc-50/50 flex justify-end gap-3">
             {footer}
           </div>
         )}

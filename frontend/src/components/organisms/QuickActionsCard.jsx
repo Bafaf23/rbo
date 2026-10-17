@@ -96,7 +96,7 @@ export default function QuickActionsCard({ tasaDolar }) {
             <button
               onClick={handleCloseModal}
               disabled={isLoading}
-              className="px-4 py-2 text-sm font-semibold text-slate-600 hover:bg-zinc-200 rounded-xl transition-colors disabled:opacity-50"
+              className="px-4 py-2 text-sm font-semibold text-slate-600 dark:text-zinc-200 hover:dark:bg-zinc-800 hover:bg-zinc-200 rounded-xl transition-colors disabled:opacity-50"
             >
               Cancelar
             </button>
