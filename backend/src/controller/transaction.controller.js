@@ -13,7 +13,7 @@ export const create = async (req, res) => {
 
   try {
     await conectDB();
-    // Lectura de token
+
     const token = req.cookies?.token;
 
     if (!token) {
@@ -25,7 +25,7 @@ export const create = async (req, res) => {
 
     // Decodificar JWT
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    const userId = decoded.id || decoded._id;
+    const userId = decoded.id;
 
     // Crear y guardar documento
     const newTransaction = new Transaction({
@@ -34,7 +34,7 @@ export const create = async (req, res) => {
     });
 
     const savedTransaction = await newTransaction.save();
-
+    console.log(`${userId}-${decoded.userName} registro un ${req.body.type}`);
     console.log("✅ Registro Exitoso en MongoDB ID:", savedTransaction._id);
 
     // NO llamar a disconectDB() aquí
