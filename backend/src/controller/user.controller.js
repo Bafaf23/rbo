@@ -1,5 +1,6 @@
 import { conectDB, disconectDB } from "../../db.js";
 import { User } from "../model/User.model.js";
+import jwt from "jsonwebtoken";
 
 export const create = async (req, res) => {
   if (!req.body) {
@@ -50,5 +51,28 @@ export const create = async (req, res) => {
       success: false,
       message: "Error interno del servidor al registrar el usuario",
     });
+  }
+};
+
+export const getInfoUser = async (req, res) => {
+  const token = req.cookies?.token;
+
+  if (!token) {
+    return res.status(401).json({
+      success: false,
+      message: "No hay sesión activa",
+    });
+  }
+
+  const decoded = jwt.verify(token, process.env.JWT_SECRET);
+  const userId = decoded.id || decoded._id;
+
+  try {
+    await conectDB();
+    const user = await User.findById(userId);
+    console.log(user);
+    return res.status(200).json(user);
+  } catch (error) {
+    console.log(error);
   }
 };
