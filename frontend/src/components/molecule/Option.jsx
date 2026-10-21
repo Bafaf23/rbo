@@ -1,6 +1,4 @@
-import {
-  faChevronRight,
-} from "@fortawesome/free-solid-svg-icons";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import Icon from "../atoms/Icon";
 
 export default function Option({ opctions = [], titleModel }) {
@@ -32,7 +30,7 @@ export default function Option({ opctions = [], titleModel }) {
 
           <Icon
             icon={faChevronRight}
-            className="text-base text-zinc-400 dark:text-zinc-500 transition-transform duration-200 group-hover:translate-x-1 group-hover:text-zinc-600 dark:group-hover:text-zinc-300"
+            className="text-base text-zinc-400 dark:text-zinc-500 transition-transform duration-200 group-hover:translate-x-1 group-hover:text-zinc-100 dark:group-hover:text-zinc-300"
           />
         </button>
       ))}

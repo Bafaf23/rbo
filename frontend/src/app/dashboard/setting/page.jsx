@@ -11,6 +11,7 @@ import {
   faShieldAlt,
   faPalette,
   faTags,
+  faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 import Button from "@/components/atoms/Button";
 import Option from "@/components/molecule/Option";
@@ -18,7 +19,7 @@ import Modal from "@/components/organisms/Modal";
 
 export default function setting() {
   const [dataUser, setDataUser] = useState(null);
-  const [isOpen, setIsOpen] = useState(false);
+  const [activeModal, setActiveModal] = useState(null);
   const [edit, setEdit] = useState(false);
 
   useEffect(() => {
@@ -56,28 +57,21 @@ export default function setting() {
       des: "Hogar, salud, servicios básicos",
       icon: faTags,
       classIcon: "text-red-400 bg-red-500/30 p-2 rounded-full",
-      onClick: () => setIsOpen(true),
+      onClick: () => setActiveModal("Categorías"),
     },
     {
       title: "Seguridad y privacidad",
       des: "Contraseña, métodos de acceso, terminos y condiciones",
       icon: faLock,
       classIcon: "text-emerald-400 bg-emerald-500/30 p-2 rounded-full",
-      onClick: () => setIsOpen(true),
+      onClick: () => setActiveModal("Seguridad"),
     },
     {
       title: "Apariencia",
       des: "Personaliza el tema visual",
       icon: faPalette,
       classIcon: "text-purple-400 bg-purple-500/30 p-2 rounded-full",
-      onClick: () => setIsOpen(true),
-    },
-    {
-      title: "Mi Perfil",
-      des: "Actualiza tu información personal",
-      icon: faUser,
-      classIcon: "text-blue-400 bg-blue-500/30 p-2 rounded-full",
-      onClick: () => setIsOpen(true),
+      onClick: () => setActiveModal("Apariencia"),
     },
   ];
 
@@ -86,28 +80,33 @@ export default function setting() {
       <Link href={"/dashboard"}>
         <Icon icon={faChevronLeft} className="text-2xl text-zinc-400" />
       </Link>
-      <div className="relative flex items-center gap-4 rounded-xl border border-zinc-200 bg-white p-3 shadow-sm dark:border-zinc-700 dark:bg-zinc-800 mt-5">
-        {/* Avatar o Iniciales */}
-        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-zinc-100 font-semibold text-zinc-700 dark:bg-zinc-700 dark:text-zinc-200 text-lg">
-          {dataUser?.image ? (
-            <img
-              src={dataUser.image}
-              alt={`${dataUser?.name || "Usuario"}`}
-              className="h-full w-full rounded-full object-cover"
-            />
-          ) : (
-            getInitials(dataUser?.name, dataUser?.lastName)
-          )}
-        </div>
+      <div
+        className="flex items-center gap-4 justify-between rounded-xl border border-zinc-200 bg-white p-3 shadow-sm dark:border-zinc-700 dark:bg-zinc-800 mt-5 hover:dark:bg-zinc-700/50 cursor-pointer group"
+        onClick={() => setActiveModal("Cuenta")}
+      >
+        <div className="flex gap-3 items-center">
+          {/* Avatar o Iniciales */}
+          <div className="flex h-16 w-16 items-center justify-center rounded-full bg-zinc-100 font-semibold text-zinc-700 dark:bg-zinc-700 dark:text-zinc-200 text-lg">
+            {dataUser?.image ? (
+              <img
+                src={dataUser.image}
+                alt={`${dataUser?.name || "Usuario"}`}
+                className="h-full w-full rounded-full object-cover"
+              />
+            ) : (
+              getInitials(dataUser?.name, dataUser?.lastName)
+            )}
+          </div>
 
-        {/* Nombre y Apellido */}
-        <div>
-          <h2 className="text-xl font-bold text-zinc-900 dark:text-zinc-100">
-            {dataUser?.name ?? "Sin nombre"} {dataUser?.lastName ?? ""}
-          </h2>
-          <p className="text-sm text-zinc-500 dark:text-zinc-400">
-            {dataUser?.role ?? "Usuario"}
-          </p>
+          {/* Nombre y Apellido */}
+          <div>
+            <h2 className="text-xl font-bold text-zinc-900 dark:text-zinc-100">
+              {dataUser?.name ?? "Sin nombre"} {dataUser?.lastName ?? ""}
+            </h2>
+            <p className="text-sm text-zinc-500 dark:text-zinc-400">
+              {dataUser?.role ?? "Usuario"}
+            </p>
+          </div>
         </div>
 
         {/* Lista de detalles */}
@@ -136,16 +135,20 @@ export default function setting() {
             </span>
           </div>
         </div> */}
+        <Icon
+          icon={faChevronRight}
+          className="text-2xl dark:text-zinc-500  group-hover:translate-x-1 group-hover:text-zinc-600 dark:group-hover:text-zinc-300 transition-all"
+        />
       </div>
       <Option opctions={optionList} titleModel="Basico" />
       <Modal
-        isOpen={isOpen}
-        onClose={() => setIsOpen(false)}
-        title="En desarrollo..."
+        isOpen={activeModal}
+        onClose={() => setActiveModal(null)}
+        title={activeModal}
       >
         <p className="text-2xl dark:text-zinc-200">
-          Pronto disfrutarás de estas opciones de edición y configuración en el
-          sistema, ten paciencia.
+          Pronto disfrutarás de la sección de <strong>{activeModal}</strong> en
+          el sistema.
         </p>
       </Modal>
     </div>
